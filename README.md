@@ -16,16 +16,6 @@
 - One-click **WAV** download
 
 
-## Project layout
-```text
-
-├─ synth.py                 # the app (unchanged)
-├─ rt_bootstrap.py          # runtime hook for PyInstaller (ffmpeg + offline model)
-├─ tools/
-│  └─ ffmpeg.exe            # static x64 ffmpeg (bundled)
-└─ dist/
-   └─ Text2Voice.exe        # final single-file build
-```
 
 ## Pack offline EXE
 1) Build-machine dependencies (Python 3.11, Windows PowerShell)
@@ -80,6 +70,21 @@ py -3.11 -m PyInstaller synth.py `
   --copy-metadata pyyaml `
   --copy-metadata requests
 ```
+
+## Project layout after
+```text
+
+├─ synth.py                 # the app (unchanged)
+├─ rt_bootstrap.py          # runtime hook for PyInstaller (ffmpeg + offline model)
+├─ assets/
+│  └─ hf/
+│     └─ models--coqui-ai--XTTS-v2/    # HF snapshot (snapshots/, refs/, etc.)
+├─ tools/
+│  └─ ffmpeg.exe            # static x64 ffmpeg (bundled)
+└─ dist/
+   └─ Text2Voice.exe        # final single-file build
+```
+
 ## Usage
 
 _**1. Run Text2Voice.exe → browser at http://127.0.0.1:5000**_
