@@ -18,14 +18,20 @@
 
 
 ## Pack offline EXE
-1) Build-machine dependencies (Python 3.11, Windows PowerShell)
+**1)** Build-machine dependencies (Python 3.11, Windows PowerShell)
 ```sh
 py -3.11 -m pip install --upgrade pip wheel setuptools
 py -3.11 -m pip install --index-url https://download.pytorch.org/whl/cpu torch torchaudio
 py -3.11 -m pip install coqui-tts==0.27.0 flask pydub soundfile pyinstaller
 py -3.11 -m pip install transformers huggingface_hub safetensors sentencepiece tokenizers regex tqdm inflect typeguard packaging filelock pyyaml requests
 ```
-2)Download XTTS-v2 snapshot into assets/
+
+
+
+
+
+
+**2)** Download XTTS-v2 snapshot into assets/
 ```sh
 py -3.11 -c "from huggingface_hub import snapshot_download; snapshot_download('coqui/XTTS-v2', local_dir_use_symlinks=False)"
 ```
@@ -34,12 +40,13 @@ $SRC = (py -3.11 -c "from huggingface_hub import snapshot_download; import pathl
 New-Item -ItemType Directory -Force -Path .\assets\hf\models--coqui-ai--XTTS-v2 | Out-Null
 robocopy $SRC .\assets\hf\models--coqui-ai--XTTS-v2 /E
 ```
-3) Put FFmpeg
+
+**3)** Put FFmpeg
 Download a static x64 [ffmpeg.exe](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z) → place at:
 
    **tools\ffmpeg.exe**
 
-4) Build (single command)
+**4)** Build (single command)
 ```sh
 py -3.11 -m PyInstaller synth.py `
   --name Text2Voice `
