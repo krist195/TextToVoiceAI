@@ -4,7 +4,7 @@
   <p align="center">
   A minimal Flask web app for multi-lingual TTS using Coqui XTTS-v2, with block-wise synthesis, a live progress ring, ETA, and WAV export.
   <br/>
-  <sub>🇬🇧 English below · 🇷🇺 Русский — внизу</sub>
+  <sub>🇬🇧 English below</sub>
 
 
 ## Features
